@@ -1,43 +1,31 @@
 "use strict";
 
-const user = require("../models").user;
+const category = require("../models").category;
 
 exports.list = function(req, res) {
-  user
+  category
     .findAll()
-    .then(user => {
-      res.jsonp(user);
+    .then(category => {
+      res.jsonp(category);
     })
     .catch(error => res.status(400).send(error));
 };
 
 exports.create = function(req, res) {
-  res.jsonp(user.create(req.body));
-};
-
-exports.findById = function(req, res) {
-  let id = req.params.id;
-  user.findById(id).then(user => {
-    if (!user) {
-      return res.status(400).send({
-        message: "User Not Found"
-      });
-    }
-    res.jsonp(user);
-  });
+  res.jsonp(category.create(req.body));
 };
 
 exports.update = function(req, res) {
   let id = req.params.id;
-  user
+  category
     .findById(req.params.id)
-    .then(user => {
-      if (!user) {
+    .then(category => {
+      if (!category) {
         return res.status(400).send({
-          message: "User Not Found"
+          message: "category Not Found"
         });
       }
-      return user
+      return category
         .update()
         .then(() => res.status(204).send())
         .catch(error => res.status(400).send(error));
@@ -45,17 +33,29 @@ exports.update = function(req, res) {
     .catch(error => res.status(400).send(error));
 };
 
+exports.findById = function(req, res) {
+  let id = req.params.id;
+  category.findById(id).then(category => {
+    if (!category) {
+      return res.status(400).send({
+        message: "category Not Found"
+      });
+    }
+    res.jsonp(category);
+  });
+};
+
 exports.delete = function(req, res) {
   let id = req.params.id;
-  user
+  category
     .findById(req.params.id)
-    .then(user => {
-      if (!user) {
+    .then(category => {
+      if (!category) {
         return res.status(400).send({
-          message: "User Not Found"
+          message: "category Not Found"
         });
       }
-      return user
+      return category
         .destroy()
         .then(() => res.status(204).send())
         .catch(error => res.status(400).send(error));
