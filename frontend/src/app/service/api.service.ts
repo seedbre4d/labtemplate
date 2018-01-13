@@ -6,7 +6,9 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class ApiService {
+export class ApiService<TEntity> {
+
+  path: string;
 
   constructor(private http: Http) { }
 
@@ -22,16 +24,16 @@ export class ApiService {
     return Observable.throw(error.json());
   }
 
-  get(path: string, params: URLSearchParams = new URLSearchParams()): Observable<any> {
-    return this.http.get(`${environment.api_url}${path}`, { headers: this.setHeaders(), search: params })
+  get(params: URLSearchParams = new URLSearchParams()): Observable<TEntity[]> {
+    return this.http.get(`${environment.api_url}${this.path}/`, { headers: this.setHeaders(), search: params })
       .catch(this.formatErrors)
       .map((res: Response) => res.json());
   }
 
 
-  put(path: string, body: Object = {}): Observable<any> {
+  put(id: number, body: Object = {}): Observable<TEntity> {
     return this.http.put(
-      `${environment.api_url}${path}`,
+      `${environment.api_url}${this.path}/${id}`,
       JSON.stringify(body),
       { headers: this.setHeaders() }
     )
@@ -39,9 +41,9 @@ export class ApiService {
       .map((res: Response) => res.json());
   }
 
-  post(path: string, body: Object = {}): Observable<any> {
+  post(body: Object = {}): Observable<TEntity> {
     return this.http.post(
-      `${environment.api_url}${path}`,
+      `${environment.api_url}${this.path}`,
       JSON.stringify(body),
       { headers: this.setHeaders() }
     )
@@ -49,9 +51,9 @@ export class ApiService {
       .map((res: Response) => res.json());
   }
 
-  delete(path): Observable<any> {
+  delete(id: number): Observable<TEntity> {
     return this.http.delete(
-      `${environment.api_url}${path}`,
+      `${environment.api_url}${this.path}/${id}`,
       { headers: this.setHeaders() }
     )
       .catch(this.formatErrors)

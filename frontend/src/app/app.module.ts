@@ -26,12 +26,19 @@ import { ButtonModule } from 'primeng/components/button/button';
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { ContextMenuModule } from 'primeng/components/contextmenu/contextmenu';
 import { UserComponent } from './components/pages/user/user.component';
+import { CategoryAddComponent } from './components/category/category-add/category-add.component';
+import { CategoryDetailsComponent } from './components/category/category-details/category-details.component';
+import { CategoryListComponent } from './components/category/category-list/category-list.component';
+import { CategoryService } from './service/category.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    UserComponent
+    UserComponent,
+    CategoryAddComponent,
+    CategoryDetailsComponent,
+    CategoryListComponent
   ],
   imports: [
     AppRoutingModule,
@@ -54,6 +61,7 @@ import { UserComponent } from './components/pages/user/user.component';
   providers: [
     AppRoutingModule,
     ApiService,
+    CategoryService
     // providers used to create fake backend
     // fakeBackendProvider,
     // MockBackend,
