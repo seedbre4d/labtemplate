@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryModel } from '../../../models/category.model';
-import { ApiService } from '../../../service/index';
-import { CategoryService } from '../../../service/category.service';
+import { CategoryService } from '../service/category.service';
+import { CategoryModel } from '../model/category.model';
 
 @Component({
   selector: 'app-category-list',
@@ -26,7 +25,7 @@ export class CategoryListComponent implements OnInit {
     this.categories = this.categories.filter(c => c.id !== category.id);
     this.apiService.delete(category.id).subscribe((res) => {
       console.log('success!');
-    })
+    });
   }
 
 }

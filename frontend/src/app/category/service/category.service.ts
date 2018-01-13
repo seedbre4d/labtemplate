@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from './api.service';
 import { Http } from '@angular/http';
-import { CategoryModel } from '../models/category.model';
+import { CategoryModel } from '../model/category.model';
+import { ApiService } from '../../service/api.service';
 
 @Injectable()
 export class CategoryService extends ApiService<CategoryModel>  {
