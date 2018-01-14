@@ -4,6 +4,7 @@ export class NoteModel {
   created: Date;
   userId: number;
   categoryId: number;
+  categoryName: string;
   content: string;
   id: number;
 }

@@ -17,8 +17,10 @@ import {
   MatDialogModule,
   MatSnackBarModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatSelectModule
 } from '@angular/material';
+import { CategoryService } from '../category/service/category.service';
 
 @NgModule({
   imports: [
@@ -34,9 +36,10 @@ import {
     MatDialogModule,
     MatSnackBarModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule
   ],
-  providers: [NoteService],
+  providers: [NoteService, CategoryService],
   declarations: [NoteAddComponent, NoteListComponent, NoteEditComponent]
 })
 export class NoteModule {}

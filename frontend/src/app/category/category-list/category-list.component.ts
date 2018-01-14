@@ -32,6 +32,7 @@ export class CategoryListComponent implements OnInit {
   openEditDialog(category: CategoryModel): void {
     const dialogRef = this.dialog.open(CategoryEditComponent, {
       width: '250px',
+      height: '35%',
       data: category
     });
     dialogRef.componentInstance.onEdit.subscribe(res => {
@@ -44,7 +45,8 @@ export class CategoryListComponent implements OnInit {
 
   openAddDialog(): void {
     const dialogRef = this.dialog.open(CategoryAddComponent, {
-      width: '250px'
+      width: '250px',
+      height: '35%',
     });
     dialogRef.componentInstance.onAdd.subscribe(res => {
       this.fetchAll();

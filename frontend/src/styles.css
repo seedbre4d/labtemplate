@@ -10,11 +10,11 @@ button {
 body {
   margin: 0px !important;
   font-family: 'Roboto';
+  overflow-x: hidden;
   background: lightgoldenrodyellow !important;
-  overflow: hidden;
 }
 
-a{
+a {
   color: black !important;
 }
 
