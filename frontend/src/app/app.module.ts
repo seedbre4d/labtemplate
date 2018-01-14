@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { NgModule, Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatTabsModule } from '@angular/material';
+import { MatTabsModule, MatSidenavModule } from '@angular/material';
 
 // UI
 
@@ -32,7 +32,8 @@ import { BaseRequestOptions } from '@angular/http';
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSidenavModule,
 
   ],
   providers: [

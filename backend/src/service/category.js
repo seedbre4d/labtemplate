@@ -26,7 +26,7 @@ exports.update = function(req, res) {
         });
       }
       return category
-        .update()
+        .update(req.body)
         .then(() => res.status(204).send())
         .catch(error => res.status(400).send(error));
     })

@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Inject } from '@angular/core';
+import { CategoryModel } from '../model/category.model';
+import { CategoryService } from '../service/category.service';
+import { MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
+import { CategoryListComponent } from '../category-list/category-list.component';
 
 @Component({
   selector: 'app-category-edit',
@@ -6,10 +10,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-edit.component.less']
 })
 export class CategoryEditComponent implements OnInit {
+  onEdit = new EventEmitter();
+  constructor(
+    private apiService: CategoryService,
+    public dialogRef: MatDialogRef<CategoryListComponent>,
+    private snackBar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA) public category: CategoryModel
+  ) {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+  updateCategory() {
+    this.apiService.put(this.category.id, this.category).subscribe(res => {
+      console.log(this.category);
+      this.onEdit.emit();
+      this.openSnackbar();
+    });
   }
 
+  openSnackbar() {
+    this.snackBar.open(`Updated category "${this.category.name}"`, 'Ok', {
+      duration: 5000
+    });
+  }
 }

@@ -1,4 +1,9 @@
-<p>
-  <input placeholder="Name" [(ngModel)]="category.name">
-  <button (click)='addCategory()'>Add</button>
-</p>
+<h1 mat-dialog-title>New category</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Name" [(ngModel)]="category.name">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button *ngIf="category.name" mat-button (click)="addCategory()">Add</button>
+</div>
