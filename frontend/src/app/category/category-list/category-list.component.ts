@@ -1,9 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { CategoryService } from "../service/category.service";
-import { CategoryModel } from "../model/category.model";
-import { MatDialog, MatSnackBar } from "@angular/material";
-import { CategoryAddComponent } from "../category-add/category-add.component";
-import { CategoryEditComponent } from "../category-edit/category-edit.component";
+import { Component, OnInit } from '@angular/core';
+import { CategoryService } from '../service/category.service';
+import { CategoryModel } from '../model/category.model';
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { CategoryAddComponent } from '../category-add/category-add.component';
+import { CategoryEditComponent } from '../category-edit/category-edit.component';
 
 @Component({
   selector: 'app-category-list',
@@ -14,7 +14,7 @@ export class CategoryListComponent implements OnInit {
   categories: CategoryModel[];
 
   constructor(
-    private apiService: CategoryService,
+    private categoryService: CategoryService,
     public dialog: MatDialog,
     private snackBar: MatSnackBar
   ) {}
@@ -24,7 +24,7 @@ export class CategoryListComponent implements OnInit {
   }
 
   fetchAll() {
-    this.apiService.get().subscribe(res => {
+    this.categoryService.get().subscribe(res => {
       this.categories = res;
     });
   }
@@ -56,7 +56,7 @@ export class CategoryListComponent implements OnInit {
 
   delete(category: CategoryModel) {
     this.categories = this.categories.filter(c => c.id !== category.id);
-    this.apiService.delete(category.id).subscribe(res => {
+    this.categoryService.delete(category.id).subscribe(res => {
       console.log('success!');
       this.openSnackbar();
     });

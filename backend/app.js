@@ -26,8 +26,11 @@ app.use(cookieParser());
 var index = require('./src/rest/index');
 var user = require('./src/rest/user');
 var category = require('./src/rest/category');
+var note = require('./src/rest/note');
+
 app.use('/api', index);
 app.use('/api/user', user);
+app.use('/api/note', note);
 app.use('/api/category', category);
 
 // catch 404 and forward to error handler

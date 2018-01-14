@@ -12,7 +12,7 @@ import { CategoryListComponent } from '../category-list/category-list.component'
 export class CategoryEditComponent implements OnInit {
   onEdit = new EventEmitter();
   constructor(
-    private apiService: CategoryService,
+    private categoryService: CategoryService,
     public dialogRef: MatDialogRef<CategoryListComponent>,
     private snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public category: CategoryModel
@@ -24,7 +24,7 @@ export class CategoryEditComponent implements OnInit {
     this.dialogRef.close();
   }
   updateCategory() {
-    this.apiService.put(this.category.id, this.category).subscribe(res => {
+    this.categoryService.put(this.category.id, this.category).subscribe(res => {
       console.log(this.category);
       this.onEdit.emit();
       this.openSnackbar();

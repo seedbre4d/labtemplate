@@ -3,10 +3,18 @@
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+button {
+  margin: 10px !important;
+}
 
 body {
   margin: 0px !important;
   font-family: 'Roboto';
-  background: lightgoldenrodyellow
-
+  background: lightgoldenrodyellow !important;
+  overflow: hidden;
 }
+
+a{
+  color: black !important;
+}
+

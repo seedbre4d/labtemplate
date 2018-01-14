@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTab } from '@angular/material/tabs/typings/tab';
+import { isNullOrUndefined } from 'util';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +10,12 @@ import { MatTab } from '@angular/material/tabs/typings/tab';
 })
 
 export class AppComponent implements OnInit {
+
+  enabled: boolean = true;
   tabLinks = [
     {label: 'Notes', link: 'note'},
     {label: 'Categories', link: 'category'},
-    {label: 'Profile', link: 'user'},
+    {label: 'Profile', link: 'edit'},
   ];
   tabNavBackground: 'black';
   ngOnInit(): void {
@@ -19,6 +23,6 @@ export class AppComponent implements OnInit {
 
 
   constructor() {
-
+    console.log(Cookie.getAll());
   }
 }

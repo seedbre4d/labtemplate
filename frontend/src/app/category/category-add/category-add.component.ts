@@ -13,7 +13,7 @@ export class CategoryAddComponent implements OnInit {
   @Input() category: CategoryModel = new CategoryModel();
   onAdd = new EventEmitter();
   constructor(
-    private apiService: CategoryService,
+    private categoryService: CategoryService,
     public dialogRef: MatDialogRef<CategoryListComponent>,
     private snackBar: MatSnackBar
   ) {}
@@ -24,7 +24,7 @@ export class CategoryAddComponent implements OnInit {
     this.dialogRef.close();
   }
   addCategory() {
-    this.apiService.post(this.category).subscribe(res => {
+    this.categoryService.post(this.category).subscribe(res => {
       console.log(this.category);
       this.onAdd.emit();
       this.openSnackbar();

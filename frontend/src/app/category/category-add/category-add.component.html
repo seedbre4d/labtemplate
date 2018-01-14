@@ -5,5 +5,7 @@
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button *ngIf="category.name" mat-button (click)="addCategory()">Add</button>
+  <button *ngIf="category.name" mat-button (click)="addCategory()">
+    <mat-icon>save</mat-icon>
+  </button>
 </div>

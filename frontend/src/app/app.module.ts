@@ -20,6 +20,7 @@ import { AppComponent } from './app.component';
 import { fakeBackendProvider } from './service';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -33,12 +34,13 @@ import { BaseRequestOptions } from '@angular/http';
     HttpModule,
     ReactiveFormsModule,
     MatTabsModule,
-    MatSidenavModule,
+    MatSidenavModule
 
   ],
   providers: [
     AppRoutingModule,
     ApiService,
+    AuthGuard
     // providers used to create fake backend
     // fakeBackendProvider,
     // MockBackend,
