@@ -4,10 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { NgModule, Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material';
 
 // UI
-import { SuiModule } from 'ng2-semantic-ui';
-import { DataTableModule, SharedModule } from 'primeng/primeng';
 
 
 // Services
@@ -21,10 +20,6 @@ import { AppComponent } from './app.component';
 import { fakeBackendProvider } from './service';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
-import { CalendarModule } from 'primeng/components/calendar/calendar';
-import { ButtonModule } from 'primeng/components/button/button';
-import { InputTextModule } from 'primeng/components/inputtext/inputtext';
-import { ContextMenuModule } from 'primeng/components/contextmenu/contextmenu';
 
 @NgModule({
   declarations: [
@@ -37,16 +32,7 @@ import { ContextMenuModule } from 'primeng/components/contextmenu/contextmenu';
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-    SuiModule,
-    // Prime
-    DataTableModule,
-    SharedModule,
-    FormsModule,
-    DataTableModule,
-    CalendarModule,
-    ButtonModule,
-    InputTextModule,
-    ContextMenuModule,
+    MatTabsModule
 
   ],
   providers: [

@@ -12,7 +12,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     CategoryRoutingModule,
-    FormsModule
+    FormsModule,
+
   ],
   providers: [
     CategoryService

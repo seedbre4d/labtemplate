@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTab } from '@angular/material/tabs/typings/tab';
 
 @Component({
   selector: 'app-root',
@@ -7,19 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AppComponent implements OnInit {
-
-  public screen: {
-    sidenavMode: string;
-    sidenavOpened: boolean;
-    sidenavButton: boolean;
-  };
+  tabLinks = [
+    {label: 'Notes', link: 'note'},
+    {label: 'Categories', link: 'category'},
+    {label: 'Profile', link: 'user'},
+  ];
+  tabNavBackground: 'black';
   ngOnInit(): void {
-
-    this.screen = {
-      sidenavOpened: true,
-      sidenavButton: true,
-      sidenavMode: 'side'
-    };
   }
 
 

@@ -1,21 +1,15 @@
-<div class="ui top fixed menu inverted large">
-  <a class="item" (click)="sidebar.toggle()">
-    <i class="sidebar icon"></i> Menu
-  </a>
-</div>
-<sui-sidebar-container class="ui bottom attached segment">
-  <sui-sidebar class="inverted vertical" #sidebar>
-    <a class="item">Home</a>
-    <a class="item">User</a>
-  </sui-sidebar>
-  <sui-sidebar-sibling [isDimmedWhenVisible]="true">
-    <router-outlet></router-outlet>
-  </sui-sidebar-sibling>
-</sui-sidebar-container>
-<!-- <div class="container">
-    <mat-sidenav-container>
-        <mat-sidenav [mode]="screen.sidenavMode" [opened]="screen.sidenavOpened" #sidenav>
-        </mat-sidenav>
+<body>
+    <div>
+        <nav mat-tab-nav-bar [backgroundColor]="tabNavBackground" aria-label="weather navigation links">
+          <a mat-tab-link
+             *ngFor="let tabLink of tabLinks; let i = index"
+             [routerLink]="tabLink.link"
+             routerLinkActive #rla="routerLinkActive"
+             [active]="rla.isActive">
+            {{tabLink.label}}
+          </a>
+        </nav>
         <router-outlet></router-outlet>
-    </mat-sidenav-container>
-</div> -->
+      </div>
+
+</body>
