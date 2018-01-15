@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTab } from '@angular/material/tabs/typings/tab';
 import { isNullOrUndefined } from 'util';
+import { Router } from '@angular/router';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 @Component({
@@ -11,7 +12,9 @@ import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 export class AppComponent implements OnInit {
 
-  enabled: boolean = true;
+  constructor(
+    private router: Router
+  ) {}
   tabLinks = [
     {label: 'Notes', link: 'note'},
     {label: 'Categories', link: 'category'},
@@ -21,8 +24,9 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  constructor() {
-    console.log(Cookie.getAll());
+  logout() {
+    Cookie.deleteAll('/');
+    this.router.navigateByUrl('');
   }
+
 }

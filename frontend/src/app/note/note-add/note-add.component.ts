@@ -6,6 +6,7 @@ import { MatDialogRef, MatSnackBar } from '@angular/material';
 import { CategoryModel } from '../../category/model/category.model';
 import { CategoryService } from '../../category/service/category.service';
 import { isNullOrUndefined } from 'util';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 @Component({
   selector: 'app-note-add',
@@ -33,6 +34,7 @@ export class NoteAddComponent implements OnInit {
   }
   addNote() {
     this.note.categoryId = this.selectedCategory.id;
+    this.note.userId = +Cookie.get('id');
     const date = new Date(this.note.created);
     this.note.created = date;
     this.noteService.post(this.note).subscribe(res => {

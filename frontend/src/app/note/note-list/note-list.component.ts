@@ -7,6 +7,7 @@ import { NoteEditComponent } from '../note-edit/note-edit.component';
 import { CategoryService } from '../../category/service/category.service';
 import { CategoryModel } from '../../category/model/category.model';
 import { isNullOrUndefined } from 'util';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 @Component({
   selector: 'app-note-list',
@@ -15,13 +16,16 @@ import { isNullOrUndefined } from 'util';
 })
 export class NoteListComponent implements OnInit {
   notes: NoteModel[];
+  userId: number;
   categories: CategoryModel[];
   constructor(
     private noteService: NoteService,
     private categoryService: CategoryService,
     public dialog: MatDialog,
     private snackBar: MatSnackBar
-  ) {}
+  ) {
+    this.userId = +(Cookie.get('id'));
+  }
 
   ngOnInit() {
     this.fetchAll();
@@ -34,7 +38,7 @@ export class NoteListComponent implements OnInit {
   }
   fetchAll() {
     this.noteService.get().subscribe(res => {
-      this.notes = res;
+      this.notes = res.filter(r => r.userId === this.userId);
       this.categoryService.get().subscribe(res2 => {
         this.categories = res2;
         for (const note of this.notes) {

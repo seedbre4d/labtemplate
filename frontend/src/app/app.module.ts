@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { NgModule, Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatTabsModule, MatSidenavModule } from '@angular/material';
+import { MatTabsModule, MatSidenavModule, MatButtonModule, MatMenuModule, MatIconModule } from '@angular/material';
 
 // UI
 
@@ -34,7 +34,10 @@ import { AuthGuard } from './auth.guard';
     HttpModule,
     ReactiveFormsModule,
     MatTabsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatIconModule
 
   ],
   providers: [

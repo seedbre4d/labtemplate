@@ -3,6 +3,7 @@ import { CategoryService } from '../service/category.service';
 import { CategoryModel } from '../model/category.model';
 import { CategoryListComponent } from '../category-list/category-list.component';
 import { MatDialogRef, MatSnackBar } from '@angular/material';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 @Component({
   selector: 'app-category-add',
@@ -24,6 +25,7 @@ export class CategoryAddComponent implements OnInit {
     this.dialogRef.close();
   }
   addCategory() {
+    this.category.userId = +Cookie.get('id');
     this.categoryService.post(this.category).subscribe(res => {
       console.log(this.category);
       this.onAdd.emit();

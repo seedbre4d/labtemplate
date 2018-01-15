@@ -4,6 +4,7 @@ import { CategoryModel } from '../model/category.model';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { CategoryAddComponent } from '../category-add/category-add.component';
 import { CategoryEditComponent } from '../category-edit/category-edit.component';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 @Component({
   selector: 'app-category-list',
@@ -12,12 +13,15 @@ import { CategoryEditComponent } from '../category-edit/category-edit.component'
 })
 export class CategoryListComponent implements OnInit {
   categories: CategoryModel[];
+  userId: number;
 
   constructor(
     private categoryService: CategoryService,
     public dialog: MatDialog,
     private snackBar: MatSnackBar
-  ) {}
+  ) {
+    this.userId = +Cookie.get('id');
+  }
 
   ngOnInit() {
     this.fetchAll();
@@ -25,7 +29,7 @@ export class CategoryListComponent implements OnInit {
 
   fetchAll() {
     this.categoryService.get().subscribe(res => {
-      this.categories = res;
+      this.categories = res.filter(r => r.userId === this.userId);
     });
   }
 

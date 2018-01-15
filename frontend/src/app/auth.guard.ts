@@ -7,8 +7,8 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { isNullOrUndefined } from 'util';
-import { Cookie } from 'ng2-cookies/ng2-cookies';
 import { CanActivateChild } from '@angular/router/src/interfaces';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
@@ -19,9 +19,9 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   ): Observable<boolean> | Promise<boolean> | boolean {
     const id = Cookie.get('id');
     const canNavigate = !isNullOrUndefined(id);
-    // if (!canNavigate) {
-    //   this.router.navigate(['/login']);
-    // }
+    if (!canNavigate) {
+      this.router.navigate(['/login']);
+    }
     return true;
   }
 
@@ -31,9 +31,9 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   ): Observable<boolean> | Promise<boolean> | boolean {
     const id = Cookie.get('id');
     const canNavigate = !isNullOrUndefined(id);
-    // if (!canNavigate) {
-    //   this.router.navigate(['/login']);
-    // }
+    if (!canNavigate) {
+      this.router.navigate(['/login']);
+    }
     return true;
   }
 }
